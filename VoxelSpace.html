@@ -100,7 +100,7 @@ var camera =
     y:        800., // y position on the map
     height:    78., // height of the camera
     angle:      0., // direction of the camera
-    horizon:  100., // horizon position (look up and down)
+    horizon:  175., // horizon position (look up and down)
     distance: 800   // distance of map
 };
 
@@ -163,13 +163,13 @@ function UpdateCamera()
     input.keypressed = false;
     if (input.leftright != 0)
     {
-        camera.angle += input.leftright*0.1*(current-time)*0.03;
+        camera.angle += input.leftright*0.075*(current-time)*0.03;
         input.keypressed = true;
     }
     if (input.forwardbackward != 0)
     {
-        camera.x -= input.forwardbackward * Math.sin(camera.angle) * (current-time)*0.03;
-        camera.y -= input.forwardbackward * Math.cos(camera.angle) * (current-time)*0.03;
+        camera.x -= input.forwardbackward * Math.sin(camera.angle) * (current-time)*0.03 * 0.5;
+        camera.y -= input.forwardbackward * Math.cos(camera.angle) * (current-time)*0.03 * 0.5;
         input.keypressed = true;
     }
     if (input.updown != 0)
@@ -179,12 +179,12 @@ function UpdateCamera()
     }
     if (input.lookup)
     {
-        camera.horizon += 2 * (current-time)*0.03;
+        camera.horizon += 8 * (current-time)*0.03;
         input.keypressed = true;
     }
     if (input.lookdown)
     {
-        camera.horizon -= 2 * (current-time)*0.03;
+        camera.horizon -= 8 * (current-time)*0.03;
         input.keypressed = true;
     }
 
