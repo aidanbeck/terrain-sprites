@@ -192,6 +192,8 @@ function UpdateCamera()
     var mapoffset = ((Math.floor(camera.y) & (map.width-1)) << map.shift) + (Math.floor(camera.x) & (map.height-1))|0;
     if ((map.altitude[mapoffset]+10) > camera.height) camera.height = map.altitude[mapoffset] + 10;
 
+    camera.height = map.altitude[mapoffset] + 10; // force camera to floor
+
     time = current;
 
 }
