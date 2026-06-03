@@ -41,7 +41,7 @@
 
 <div id="info">
     Fly controls
-    <b>WASD</b> or <b>Cursor Keys</b> or <b>left click</b> move, <b>R|F</b> up | down, <b>Q|E</b> pitch,
+    <b>WASD</b> or <b>Cursor Keys</b> to Move, <b>Q|E</b> to Look Up/Down, <b>Left Click</b> to Fly
 <br>
 
 <select name="Mapselector" size="1" onchange="LoadMap(this.value);" value="C1W;D1">
@@ -80,7 +80,7 @@
 <label for="distancerange">Distance</label>
 <input id="distancerange" type="range" min="100" max="2000" step="1" onchange="camera.distance = this.value">
 
-<a href="https://github.com/s-macke/VoxelSpace">Github project page</a>
+<a href="https://github.com/s-macke/VoxelSpace">Based on Sebastian Macke's "Voxel Space" Project</a>
 
 </div>
 
@@ -146,7 +146,7 @@ var input =
     keypressed:      false
 }
 
-var updaterunning = false;
+var updaterunning = true;
 
 var time = new Date().getTime();
 
