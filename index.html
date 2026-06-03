@@ -146,7 +146,7 @@ var input =
     keypressed:      false
 }
 
-var updaterunning = true;
+var updaterunning = false;
 
 var time = new Date().getTime();
 
@@ -416,22 +416,18 @@ function Render()
             var mapoffset = ((Math.floor(ply) & mapwidthperiod) << map.shift) + (Math.floor(plx) & mapheightperiod)|0;
             var heightonscreen = (camera.height - map.altitude[mapoffset]) * invz + camera.horizon|0;
 
+
+
+            DrawVerticalLine(i, heightonscreen|0, hiddeny[i], map.color[mapoffset]);
+
+            // place white pillar for testing
             // plx : world coordinate
             // ply : world coordinate
-
-            if (plx < 100 &&  plx > 0 && ply < 10 && ply > 0) {
-                heightonscreen = (camera.height - plx) * invz + camera.horizon|0;
-
+            if (Math.floor(plx) == 500 && Math.floor(ply) == 500) { // showcase
+                heightonscreen = (camera.height - 800) * invz + camera.horizon|0;
                 DrawVerticalLine(i, heightonscreen|0, hiddeny[i], 0);
             } 
-            else if (Math.floor(plx) == 200 && Math.floor(ply) == 200) {
-                heightonscreen = (camera.height - 800) * invz + camera.horizon|0;
 
-                DrawVerticalLine(i, heightonscreen|0, hiddeny[i], 0);
-            } else {
-                DrawVerticalLine(i, heightonscreen|0, hiddeny[i], map.color[mapoffset]);
-
-            }
             if (heightonscreen < hiddeny[i]) hiddeny[i] = heightonscreen;
             plx += dx;
             ply += dy;
@@ -453,13 +449,8 @@ function Draw()
     Flip();
     frames++;
 
-    if (!input.keypressed)
-    {
-        updaterunning = false;
-    } else
-    {
-        window.requestAnimationFrame(Draw, 0);
-    }
+    window.requestAnimationFrame(Draw, 0);
+
 }
 
 // ---------------------------------------------
